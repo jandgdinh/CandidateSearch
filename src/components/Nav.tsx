@@ -7,15 +7,15 @@ const Nav = () => {
   return (
     <div>
       <nav>
-        <ul>
-          <li>
+        <ul className='nav nav-tabs'>
+          <li className="nav-item">
             <Link to="/" className={currentPath === '/' ? 'active' : ''}>
-              Candidate Search
+              Home
             </Link>
           </li>
-          <li>
+          <li className="nav-item">
             <Link to="/SavedCandidates" className={currentPath === '/SavedCandidates' ? 'active' : ''}>
-              Saved Candidates
+              Potential Candidates
             </Link>
           </li>
         </ul>

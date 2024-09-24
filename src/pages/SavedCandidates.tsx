@@ -9,23 +9,55 @@ const SavedCandidates = () => {
     setSavedCandidates(candidates);
   }, []);
 
+const removeCandidate = (id: number) => {
+  const updatedCandidates = savedCandidates.filter(candidate => candidate.id !== id);
+  setSavedCandidates(updatedCandidates);
+  localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
+}
+
+
   return (
     <div>
       <h1>Saved Candidates</h1>
       {savedCandidates.length > 0 ? (
-        <ul>
-          {savedCandidates.map(candidate => (
-            <li key={candidate.id}>
-              <img src={candidate.avatar_url} alt={`${candidate.login}'s avatar`} />
-              <h2>{candidate.name}</h2>
-              <p>Username: {candidate.login}</p>
-              <p>Location: {candidate.location}</p>
-              <p>Email: {candidate.email}</p>
-              <p>Company: {candidate.company}</p>
-              <a href={candidate.html_url} target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-            </li>
+        <table className="table">
+        <thead>
+          <tr>
+            <th>Avatar</th>
+            <th>Username</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Reject</th>
+          </tr>
+        </thead>
+        <tbody>
+          {savedCandidates.map((savedCandidate, idx) => (
+            <tr key={idx}>
+              <td><img src={savedCandidate.avatar_url} alt={`${savedCandidate.login}'s avatar`} width="50" /></td>
+              <td>{savedCandidate.login}</td>
+              <td>{savedCandidate.location || 'N/A'}</td>
+              <td>{savedCandidate.email || 'N/A'}</td>
+              <td>{savedCandidate.company || 'N/A'}</td>
+              <td>
+                  <button
+                    onClick={() => removeCandidate(savedCandidate.id)}
+                    style={{
+                      backgroundColor: 'red',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      padding: '0.5em 1em',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Remove
+                  </button>
+                </td>
+            </tr>
           ))}
-        </ul>
+        </tbody>
+      </table>
       ) : (
         <p>No candidates have been accepted</p>
       )}

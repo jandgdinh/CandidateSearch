@@ -118,3 +118,46 @@ tbody tr:nth-child(odd) {
   width: 80vw;
   table-layout: fixed;
 }
+
+.card {
+  background-color: #333333;
+  border-radius: 20px;
+  padding: 2em; /* Increased padding for better spacing */
+  margin: 2em; /* Increased margin for better spacing */
+  width: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box shadow */
+  border: 1px solid #444444;
+}
+
+.table-container {
+  width: 80vw;
+  margin: 2em auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #444444;
+  padding: 1em;
+  text-align: left;
+}
+
+.table th {
+  background-color: #555555;
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #333333; /* Dark grey */
+}
+
+.table tr:nth-child(odd) {
+  background-color: #444444; /* Light grey */
+}
+
+.table td {
+  color: white;
+}
